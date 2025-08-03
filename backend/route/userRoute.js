@@ -1,9 +1,8 @@
 let express = require("express");
-const { register, login, logout } = require("../controller/userController");
+const isLogin = require("../middleware/isLogin");
+const { getUserBySearch } = require("../controller/userHandlerController");
 let router = express.Router();
 
-router.post("/register", register);
-router.post("/login", login);
-router.post("/logout", logout);
+router.get("/search",isLogin,getUserBySearch)
 
 module.exports = router;
